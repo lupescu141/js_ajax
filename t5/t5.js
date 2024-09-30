@@ -1,10 +1,11 @@
 // your code here
+import { restaurantModal, restaurantRow } from "./components";
 const dialog = document.querySelector("dialog");
 const table = document.getElementById("rTable");
 const restaurantInfo = document.getElementById("restaurantInfo");
 const menu = document.getElementById("menu");
 
-async function post() {
+const post = async () => {
   try {
     const url =
       "https://media1.edu.metropolia.fi/restaurant/api/v1/restaurants";
@@ -22,15 +23,15 @@ async function post() {
   } catch (error) {
     console.error("An error occurred:", error);
   }
-}
+};
 
-function exitModal() {
+const exitModal = () => {
   dialog.close();
   restaurantInfo.textContent = "";
   menu.textContent = "";
-}
+};
 
-async function highlightName(element) {
+const highlightName = async (element) => {
   const highlighted = document.querySelectorAll(".namedHighlights");
   const restaurants = await post();
 
@@ -86,9 +87,9 @@ async function highlightName(element) {
   );
 
   dialog.showModal();
-}
+};
 
-async function main() {
+const main = async () => {
   const restaurants = await post();
 
   restaurants.sort((a, b) => a.name.localeCompare(b.name));
@@ -99,6 +100,6 @@ async function main() {
       `<tr><th onClick= "highlightName(this)">${element.name}</th><th>${element.address}</th></tr>`
     );
   });
-}
+};
 
 main();
