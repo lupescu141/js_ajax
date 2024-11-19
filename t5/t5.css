@@ -28,3 +28,12 @@ td {
 .namedHighlights {
   background-color: #e41f1f;
 }
+
+.sort_buttons li {
+  display: inline;
+  padding: 10px;
+}
+
+.sort_buttons li p {
+  display: inline;
+}

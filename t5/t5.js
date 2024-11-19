@@ -1,5 +1,5 @@
 // your code here
-import { restaurantModal, restaurantRow } from "./components.js";
+import { restaurantModal, restaurantRow, filterRows } from "./components.js";
 import { fetchData } from "./utils.js";
 import { baseUrl, dialog, table, restaurantInfo, menu } from "./variables.js";
 
@@ -53,6 +53,18 @@ const main = async () => {
   restaurants.forEach((element) => {
     table.appendChild(restaurantRow(element));
   });
+
+  document
+    .getElementById("button_all")
+    .addEventListener("click", () => filterRows("", restaurants, table));
+  document
+    .getElementById("button_sodexo")
+    .addEventListener("click", () => filterRows("Sodexo", restaurants, table));
+  document
+    .getElementById("button_compass")
+    .addEventListener("click", () =>
+      filterRows("Compass Group", restaurants, table)
+    );
 };
 
 main();

@@ -31,4 +31,25 @@ const restaurantModal = (restaurant, menu) => {
   return menuHtml;
 };
 
-export { restaurantRow, restaurantModal };
+const resetTable = (table) => {
+  table.innerHTML = "";
+};
+
+const filterRows = (restaurantCompany, restarantArray, table) => {
+  resetTable(table);
+
+  var filterArray = restarantArray;
+
+  if (restaurantCompany != "") {
+    filterArray = restarantArray.filter(
+      (element) => element.company == restaurantCompany
+    );
+    console.log(filterArray);
+  }
+
+  filterArray.forEach((element) => {
+    table.appendChild(restaurantRow(element));
+  });
+};
+
+export { restaurantRow, restaurantModal, resetTable, filterRows };
